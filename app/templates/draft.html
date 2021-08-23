@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px black solid;
+            font: 12px sans-serif;
+        }
+
+        td {
+            border: 1px black solid;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+
+</html>
+{% extends 'layout.html' %}
+
+{% block content %}
+<h3>
+    Players
+</h3>
+<hr />
+<!-- <div style="background-image: url('app/static/img/main.jpeg');"></div> -->
+<section class="visual">
+    <div class="container">
+        <div class="text-block">
+            <div class="heading-holder">
+                <h3>Check out the players</h3>
+            </div>
+            <p class="tagline">Get your dream team</p>
+        </div>
+    </div>
+
+<hr />
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rk</th>
+            <th>Player</th>
+            <th>Tm</th>
+            <th>Pos</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    $(document).ready(function () {
+        $('#data').DataTable({
+            ajax: '/api/rushers',
+            serverSide: false,
+            columns: [
+                { data: 'Rk' },
+                { data: 'Player', orderable: false },
+                { data: 'Tm' },
+                { data: 'Pos' }
+            ],
+        });
+    });
+</script>
+{% endblock %}

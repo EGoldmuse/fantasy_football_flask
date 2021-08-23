@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h3>
+    Draft well. Or don't
+</h3>
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rk</th>
+            <th>Player</th>
+            <th>Tm</th>
+            <th>Pos</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    $(document).ready(function () {
+        $('#data').DataTable({
+            ajax: '/api/rushers',
+            serverSide: false,
+            columns: [
+                { data: 'Rk' },
+                { data: 'Player', orderable: false},
+                { data: 'Tm'},
+                { data: 'Pos'}
+            ],
+        });
+    });
+</script>
+{% endblock %}

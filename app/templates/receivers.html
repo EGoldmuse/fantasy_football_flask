@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h3>
+    Receiving Stats
+</h3>
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rk</th>
+            <th>Player</th>
+            <th>Tm</th>
+            <th>Age</th>
+            <th>Pos</th>
+            <th>G</th>
+            <th>GS</th>
+            <th>Tgt</th>
+            <th>Rec</th>
+            <th>Ctch%</th>
+            <th>Yds</th>
+            <th>YR</th>
+            <th>TD</th>
+            <th>FirstD</th>
+            <th>Lng</th>
+            <th>YTgt</th>
+            <th>RPG</th>
+            <th>YPG</th>
+            <th>FMB</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    $(document).ready(function () {
+        $('#data').DataTable({
+            ajax: '/api/receivers',
+            serverSide: false,
+            columns: [
+                { data: 'Rk' },
+                { data: 'Player', orderable: false },
+                { data: 'Tm' },
+                { data: 'Age' },
+                { data: 'Pos' },
+                { data: 'G' },
+                { data: 'GS' },
+                { data: 'Tgt' },
+                { data: 'Rec' },
+                { data: 'Ctch%' },
+                { data: 'Yds' },
+                { data: 'YR' },
+                { data: 'TD' },
+                { data: 'FirstD' },
+                { data: 'Lng' },
+                { data: 'YTgt' },
+                { data: 'RPG' },
+                { data: 'YPG' },
+                { data: 'FMB' }
+            ],
+        });
+    });
+</script>
+{% endblock %}

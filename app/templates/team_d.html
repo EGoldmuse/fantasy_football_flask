@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h3>
+    DST Stats
+</h3>
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rk</th>
+            <th>Player</th>
+            <th>Tm</th>
+            <th>G</th>
+            <th>PF</th>
+            <th>Yds</th>
+            <th>Ply</th>
+            <th>Y/P</th>
+            <th>TO</th>
+            <th>Int</th>
+            <th>Sc%</th>
+            <th>TO%</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('#data').DataTable({
+            ajax: '/api/team_d',
+            serverSide: false,
+            columns: [
+                { data: 'Rk' },
+                { data: 'Player' },
+                { data: 'Tm', orderable: false },
+                { data: 'G', orderable: false },
+                { data: 'PF' },
+                { data: 'Yds' },
+                { data: 'Ply' },
+                { data: 'Y/P' },
+                { data: 'TO' },
+                { data: 'Int' },
+                { data: 'Sc%' },
+                { data: 'TO%' }
+            ],
+        });
+    });
+</script>
+{% endblock %}

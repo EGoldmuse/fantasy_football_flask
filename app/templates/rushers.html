@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h3>
+    Rushing Stats
+</h3>
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rk</th>
+            <th>Player</th>
+            <th>Tm</th>
+            <th>Age</th>
+            <th>Pos</th>
+            <th>G</th>
+            <th>GS</th>
+            <th>RuAtt</th>
+            <th>RuYds</th>
+            <th>RuTD</th>
+            <th>Ru1D</th>
+            <th>RuLng</th>
+            <th>RuYA</th>
+            <th>RuYG</th>
+            <th>FMB</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+{% endblock content %}
+
+{% block scripts %}
+<!-- <script>
+    // The code here allows us to search the datatable for specific results. 
+    // The list below is whether we allow for elements in the table to be searched
+    // the middle two are unable to sort by
+//     $(document).ready(function () {
+//         $('#data').DataTable({
+//             columns: [
+//                 null,
+//                 { searchable: false },
+//                 { orderable: false, searchable: false },
+//                 { orderable: false, searchable: false },
+//                 null],
+//         });
+//     });
+// </script> -->
+
+
+<!-- THIS IS THE IDEAL WAY TO MOVE THROUGH THE DATA. WILL NEED TO ESTABLISH THE API CONNECTION FOR AJAX -->
+<script>
+    $(document).ready(function () {
+        $('#data').DataTable({
+            ajax: '/api/rushers',
+            serverSide: false,
+            columns: [
+                { data: 'Rk' },
+                { data: 'Player', orderable: false },
+                { data: 'Tm' },
+                { data: 'Age' },
+                { data: 'Pos' },
+                { data: 'G' },
+                { data: 'GS' },
+                { data: 'RuAtt' },
+                { data: 'RuYds' },
+                { data: 'RuTD' },
+                { data: 'Ru1D' },
+                { data: 'RuLng' },
+                { data: 'RuYA' },
+                { data: 'RuYG' },
+                { data: 'FMB' }
+            ],
+        });
+    });
+</script>
+{% endblock %}

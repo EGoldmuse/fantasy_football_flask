@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h3>Passing Stats</h3>
+
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rk</th>
+            <th>Player</th>
+            <th>Tm</th>
+            <th>Age</th>
+            <th>Pos</th>
+            <th>G</th>
+            <th>GS</th>
+            <th>QBrec</th>
+            <th>Cmp</th>
+            <th>Att</th>
+            <th>Cmp%</th>
+            <th>Yds</th>
+            <th>TD</th>
+            <th>TD%</th>
+            <th>Int</th>
+            <th>Int%</th>
+            <th>FirstD</th>
+            <th>Lng</th>
+            <th>YA</th>
+            <th>AYA</th>
+            <th>YC</th>
+            <th>Rate</th>
+            <th>QBR</th>
+            <th>Sk</th>
+            <th>YdsLost</th>
+            <th>NYA</th>
+            <th>ANYA</th>
+            <th>Sk%</th>
+            <th>FourthQC</th>
+            <th>GWD</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+{% endblock content %}
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('#data').DataTable({
+            ajax: '/api/passers',
+            serverSide: false,
+            columns: [
+                { data: 'Rk' },
+                { data: 'Player', orderable: false },
+                { data: 'Tm' },
+                { data: 'Age' },
+                { data: 'Pos' },
+                { data: 'G' },
+                { data: 'GS' },
+                { data: 'QBrec' },
+                { data: 'Cmp' },
+                { data: 'Att' },
+                { data: 'Cmp%' },
+                { data: 'Yds' },
+                { data: 'TD' },
+                { data: 'TD%' },
+                { data: 'Int' },
+                { data: 'Int%' },
+                { data: 'FirstD' },
+                { data: 'Lng' },
+                { data: 'YA' },
+                { data: 'AYA' },
+                { data: 'YC' },
+                { data: 'Rate' },
+                { data: 'QBR' },
+                { data: 'Sk' },
+                { data: 'YdsLost' },
+                { data: 'NYA' },
+                { data: 'ANYA' },
+                { data: 'Sk%' },
+                { data: 'FourthQC' },
+                { data: 'GWD' }
+            ],
+        });
+    });
+</script>
+{% endblock %}
